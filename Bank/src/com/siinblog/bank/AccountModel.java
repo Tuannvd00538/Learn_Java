@@ -62,7 +62,7 @@ public class AccountModel {
             System.out.println(" ---------------- ");
             System.out.println("Số Tài Khoản: " + rs.getInt("accountNumber"));
             System.out.println("Tài Khoản: " + rs.getString("username"));
-            System.out.println("Số Dư: " + rs.getInt("balance"));
+            System.out.println("Số Dư: " + rs.getInt("balance") + "VND");
         }
     }
     
@@ -96,7 +96,7 @@ public class AccountModel {
         int balance = 0;
         while (rs.next()) {
             balance = rs.getInt("balance");
-            balance+=mon;
+            balance += mon;
             stt.execute("UPDATE accounts SET balance = " + balance + " "
                     + "WHERE username = '" + username + "'");
             return true;
