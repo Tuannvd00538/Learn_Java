@@ -46,7 +46,7 @@ public class AccountController {
     public String getMenu(){
         System.out.println("1. Kiểm tra số dư");
         System.out.println("2. Rút tiền");
-        System.out.println("3. Nạp tiền");
+        System.out.println("3. Gửi tiền");
         Scanner sc = new Scanner(System.in);
         String pick = sc.nextLine();
         return pick;
@@ -81,10 +81,10 @@ public class AccountController {
     
     public void addMoney() throws SQLException{
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Số tiền bạn muốn nạp là: ");
+        System.out.print("Số tiền bạn muốn gửi là: ");
         int money = scanner.nextInt();
         if (money == 0) {
-            System.out.println("Bạn chưa nhập số tiền");
+            System.out.println("Số tiền gửi không thể bằng 0");
         } else if (money <= 50000){
             System.out.println("Số tiền gửi phải lớn hơn 50k");
         } else {

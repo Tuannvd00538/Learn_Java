@@ -35,15 +35,20 @@ public class AccountModel {
         Connection cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/account?useUnicode=true"
                         + "&characterEncoding=UTF-8","root","");
         Statement stt = cnn.createStatement();
-        stt.execute("insert into accounts (username, password) values ('" 
-                + account.getUsername() + "', '" + account.getPassword() + "');");
-        if (true) {
-            System.out.println("Đăng ký thành công.");
-            System.out.println("Tài khoản: " + account.getUsername());
-            System.out.println("Mật khẩu: " + account.getPassword());
-            checkLogin(account.getUsername(), account.getPassword());
+        ResultSet rs = stt.executeQuery("SELECT * FROM accounts WHERE username = '" + account.getUsername() + "'");
+        if (rs.next()) {
+            System.out.println("Tài khoản đã tồn tại!");
         } else {
-            System.out.println("Oops! Có lỗi xảy ra.");
+            stt.execute("insert into accounts (username, password) values ('" 
+                + account.getUsername() + "', '" + account.getPassword() + "');");
+            if (true) {
+                System.out.println("Đăng ký thành công.");
+                System.out.println("Tài khoản: " + account.getUsername());
+                System.out.println("Mật khẩu: " + account.getPassword());
+                System.out.println("\n-------------------------------------\n");
+            } else {
+                System.out.println("Oops! Có lỗi xảy ra.");
+            }
         }
     }
     
