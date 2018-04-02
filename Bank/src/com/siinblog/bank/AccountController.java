@@ -63,13 +63,19 @@ public class AccountController {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhập số tiền bạn muốn rút: ");
         int money = scanner.nextInt();
-        if (mod.getMon(username, money)) {
-            System.out.println("Thành công!\nBạn vui lòng nhận tiền và nhận lại thẻ!");
-            String scan = scanner.nextLine();
-        }
-        else{
-            System.out.println("Số dư không đủ");
-            return;
+        if (money == 0) {
+            System.out.println("Số tiền cần rút phải lớn hơn 0");
+        } else if (money <= 50000){
+            System.out.println("Số tiền cần rút phải lớn hơn 50k");
+        } else {
+            if (mod.getMon(username, money)) {
+                System.out.println("Thành công!\nBạn vui lòng nhận tiền và nhận lại thẻ!");
+                String scan = scanner.nextLine();
+            }
+            else{
+                System.out.println("Số dư không đủ");
+                return;
+            }
         }
     }
     
@@ -77,13 +83,19 @@ public class AccountController {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Số tiền bạn muốn nạp là: ");
         int money = scanner.nextInt();
-        if (mod.addMon(username, money)) {
-            System.out.println("Tài khoản của bạn có thêm " + money + "VNĐ");
-            String scan = scanner.nextLine();
-        }
-        else{
-            System.out.println("Oops! Có lỗi xảy ra.");
-            return;
+        if (money == 0) {
+            System.out.println("Bạn chưa nhập số tiền");
+        } else if (money <= 50000){
+            System.out.println("Số tiền gửi phải lớn hơn 50k");
+        } else {
+            if (mod.addMon(username, money)) {
+                System.out.println("Tài khoản của bạn có thêm " + money + "VNĐ");
+                String scan = scanner.nextLine();
+            }
+            else{
+                System.out.println("Oops! Có lỗi xảy ra.");
+                return;
+            }
         }
     }
 }
