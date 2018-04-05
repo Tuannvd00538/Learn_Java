@@ -7,6 +7,7 @@ package com.siinblog.bank;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,8 +40,11 @@ public class AccountModel {
         if (rs.next()) {
             System.out.println("Tài khoản đã tồn tại!");
         } else {
-            stt.execute("insert into accounts (username, password) values ('" 
-                + account.getUsername() + "', '" + account.getPassword() + "');");
+            String sql = "insert into accounts (username, password) values (?, ?)";
+            PreparedStatement ps = cnn.prepareStatement(sql);
+            ps.setString(1, account.getUsername());
+            ps.setString(2, account.getPassword());
+            ps.execute();
             if (true) {
                 System.out.println("Đăng ký thành công.");
                 System.out.println("Tài khoản: " + account.getUsername());
