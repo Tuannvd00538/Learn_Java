@@ -14,13 +14,13 @@ public class Event {
     private String name;
     private String createAt;
     private String endAt;
-    private String category;
+    private int category;
     private int status;
 
     public Event() {
     }
 
-    public Event(String name, String createAt, String endAt, String category) {
+    public Event(String name, String createAt, String endAt, int category) {
         this.name = name;
         this.createAt = createAt;
         this.endAt = endAt;
@@ -59,11 +59,11 @@ public class Event {
         this.endAt = endAt;
     }
 
-    public String getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 
@@ -73,5 +73,9 @@ public class Event {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+    
+    public String getCategoryName(int category){
+        return category == 1 ? "Team building" : "Hội thảo";
     }
 }

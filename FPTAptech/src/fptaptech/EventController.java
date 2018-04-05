@@ -35,7 +35,7 @@ public class EventController {
         System.out.println("Loại sự kiện:");
         System.out.println("1. Hội thảo");
         System.out.println("2. Team building");
-        String category = input.nextLine();
+        int category = input.nextInt();
         Event event = new Event(name, createAt, endAt, category);
         em.addEvent(event);
         return event;

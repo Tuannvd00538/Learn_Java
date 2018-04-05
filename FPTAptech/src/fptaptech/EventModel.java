@@ -17,7 +17,7 @@ import java.sql.Statement;
  * @author Ngo Van Tuan
  */
 public class EventModel {
-
+    Event event = new Event();
     public void addEvent(Event event) {
         java.util.Date siinCreate = new java.util.Date(event.getCreateAt());
         java.util.Date siinEnd = new java.util.Date(event.getEndAt());
@@ -32,7 +32,7 @@ public class EventModel {
             ps.setString(1, event.getName());
             ps.setDate(2, Create);
             ps.setDate(3, End);
-            ps.setString(4, event.getCategory());
+            ps.setInt(4, event.getCategory());
             ps.execute();
             if (true) {
                 System.out.println("Thêm thành công!");
@@ -74,12 +74,9 @@ public class EventModel {
             Statement stt = cnn.createStatement();
             ResultSet rs = stt.executeQuery("SELECT * FROM events WHERE id = '" + code + "' AND status = '1'");
             while (rs.next()) {
-                String category = rs.getString("category");
-                if (category.equals("1")) {
-                    System.out.println("Mã sự kiện: " + rs.getInt("id") + " - Tên sự kiện: " + rs.getString("name") + " - Ngày bắt đầu: " + rs.getDate("createAt") + " - Ngày kết thúc: " + rs.getDate("endAt") + " - Loại sự kiện: Hội thảo");
-                } else if (category.equals("2")) {
-                    System.out.println("Mã sự kiện: " + rs.getInt("id") + " - Tên sự kiện: " + rs.getString("name") + " - Ngày bắt đầu: " + rs.getDate("createAt") + " - Ngày kết thúc: " + rs.getDate("endAt") + " - Loại sự kiện: Team building");
-                }
+                System.out.println("Mã sự kiện: " + rs.getInt("id") + " - Tên sự kiện: " + rs.getString("name") + 
+                        " - Ngày bắt đầu: " + rs.getDate("createAt") + " - Ngày kết thúc: " + rs.getDate("endAt") + 
+                        " - Loại sự kiện: " + event.getCategoryName(rs.getInt("category")));
                 System.out.println("------------------------------------");
             }
             if (rs.wasNull()) {
