@@ -51,12 +51,9 @@ public class EventModel {
             Statement stt = cnn.createStatement();
             ResultSet rs = stt.executeQuery("SELECT * FROM events WHERE status = '1'");
             while (rs.next()) {
-                String category = rs.getString("category");
-                if (category.equals("1")) {
-                    System.out.println("Mã sự kiện: " + rs.getInt("id") + " - Tên sự kiện: " + rs.getString("name") + " - Ngày bắt đầu: " + rs.getDate("createAt") + " - Ngày kết thúc: " + rs.getDate("endAt") + " - Loại sự kiện: Hội thảo");
-                } else if (category.equals("2")) {
-                    System.out.println("Mã sự kiện: " + rs.getInt("id") + " - Tên sự kiện: " + rs.getString("name") + " - Ngày bắt đầu: " + rs.getDate("createAt") + " - Ngày kết thúc: " + rs.getDate("endAt") + " - Loại sự kiện: Team building");
-                }
+                System.out.println("Mã sự kiện: " + rs.getInt("id") + " - Tên sự kiện: " + rs.getString("name") + 
+                        " - Ngày bắt đầu: " + rs.getDate("createAt") + " - Ngày kết thúc: " + rs.getDate("endAt") + 
+                        " - Loại sự kiện: " + event.getCategoryName(rs.getInt("category")));
                 System.out.println("------------------------------------");
             }
             if (rs.wasNull()) {

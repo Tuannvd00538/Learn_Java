@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siin.AppController">
+   <children>
+       <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+           <tabs>
+             <Tab fx:id="vnexpress" text="VnExpress" style="-fx-cursor: hand;">
+               <content>
+                 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="482.0" prefWidth="800.0" style="-fx-background-color: #eee;">
+                        <children>
+                           <Button fx:id="homeVN" layoutX="14.0" layoutY="477.0" mnemonicParsing="false" onAction="#getArticlesVN" style="-fx-background-color: green; -fx-cursor: hand;" text="Home Articles" textFill="WHITE" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="575.0" AnchorPane.topAnchor="480.0">
+                              <font>
+                                 <Font name="System Bold" size="12.0" />
+                              </font>
+                           </Button>
+                           <Button fx:id="categoryVN" layoutX="274.0" layoutY="267.0" mnemonicParsing="false" style="-fx-background-color: green; -fx-cursor: hand;" text="Category Articles" textFill="WHITE" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="480.0">
+                              <font>
+                                 <Font name="System Bold" size="12.0" />
+                              </font>
+                           </Button>
+                           <Button fx:id="colseVN" layoutX="480.0" layoutY="267.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: red; -fx-cursor: hand;" text="Close" textFill="WHITE" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="575.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="480.0">
+                              <font>
+                                 <Font name="System Bold" size="12.0" />
+                              </font>
+                           </Button>
+                           <Pane fx:id="labelVN" layoutX="14.0" layoutY="14.0" prefHeight="228.0" prefWidth="570.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                           <children>
+                              <ListView fx:id="listViewVN" layoutX="-3.0" layoutY="-2.0" prefHeight="412.0" prefWidth="778.0" />
+                           </children></Pane>
+                        </children>
+                  </AnchorPane>
+               </content>
+             </Tab>
+             <Tab fx:id="dantri" text="DanTri" style="-fx-cursor: hand;">
+               <content>
+                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #eee;">
+                        <children>
+                           <Pane fx:id="labelDT" layoutX="79.0" layoutY="22.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                           <children>
+                              <ListView fx:id="listViewDT" layoutX="-3.0" layoutY="-2.0" prefHeight="412.0" prefWidth="778.0" />
+                           </children></Pane>
+                           <Button fx:id="homeDT" layoutX="43.0" layoutY="275.0" mnemonicParsing="false" onAction="#getArticlesDT" style="-fx-background-color: green; -fx-cursor: hand;" text="Home Articles" textFill="WHITE" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="575.0" AnchorPane.topAnchor="480.0">
+                              <font>
+                                 <Font name="System Bold" size="12.0" />
+                              </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           </Button>
+                           <Button fx:id="categoryDT" layoutX="254.0" layoutY="275.0" mnemonicParsing="false" style="-fx-background-color: green; -fx-cursor: hand;" text="Category Articles" textFill="WHITE" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="480.0">
+                              <font>
+                                 <Font name="System Bold" size="12.0" />
+                              </font>
+                           </Button>
+                           <Button fx:id="closeDT" layoutX="460.0" layoutY="275.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: red; -fx-cursor: hand;" text="Close" textFill="WHITE" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="575.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="480.0">
+                             <font>
+                                 <Font name="System Bold" size="12.0" />
+                              </font>
+                           </Button>
+                        </children>
+                  </AnchorPane>
+               </content>
+             </Tab>
+           </tabs>
+         </TabPane>
+   </children>
+</AnchorPane>

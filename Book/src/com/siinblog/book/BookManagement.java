@@ -96,6 +96,11 @@ public class BookManagement {
                         }
                     }
                     break;
+                case "3":
+                    ctrl.addBook();
+                    break;
+                case "4":
+                    return;
                 default:
                     option = false;
                     break;

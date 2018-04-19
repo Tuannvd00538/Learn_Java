@@ -5,9 +5,9 @@
  */
 package com.siinblog.book;
 
-import static com.sun.jmx.snmp.ThreadContext.contains;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -15,17 +15,21 @@ import java.util.Scanner;
  * @author Ngo Van Tuan
  */
 public class Controller {
-    Book book1 = new Book(1000, "Hom Nay Toi That Tinh", "Ha Vu", "Ha Noi");
-    Book book2 = new Book(1001, "Cot Cach Phu Nu", "Huyen Trang Bat Hoi", "Ha Noi");
-    Book book3 = new Book(1002, "Phu Nu Van Nguoi Me", "Huyen Trang Bat Hoi", "Ha Noi");
-    Book book4 = new Book(1003, "Ngay Nguoi Thuong Mot Nguoi Thuong Khac", "Tri", "Ha Noi");
-    Book book5 = new Book(1004, "Manh Me Va Co Doc", "Phuong Ny", "Ha Noi");
+    Book book1 = new Book(261199, "Hom Nay Toi That Tinh", "Ha Vu", "Ha Noi");
+    Book book2 = new Book(271200, "Cot Cach Phu Nu", "Huyen Trang Bat Hoi", "Ha Noi");
+    Book book3 = new Book(280101, "Phu Nu Van Nguoi Me", "Huyen Trang Bat Hoi", "Ha Noi");
+    Book book4 = new Book(290202, "Ngay Nguoi Thuong Mot Nguoi Thuong Khac", "Tri", "Ha Noi");
+    Book book5 = new Book(300303, "Manh Me Va Co Doc", "Phuong Ny", "Ha Noi");
     ArrayList<Book> listString = new ArrayList(Arrays.asList(book1, book2, book3, book4, book5));
     
+    Scanner sc = new Scanner(System.in);
+    
     public String getHomePage() {
+        System.out.println("-----------------------------------");
         System.out.println("1. Xem sách");
         System.out.println("2. Tìm kiếm sách");
-        Scanner sc = new Scanner(System.in);
+        System.out.println("3. Thêm sách");
+        System.out.println("4. Đóng chương trình");
         String pick = sc.nextLine();
         return pick;
     }
@@ -38,6 +42,10 @@ public class Controller {
             Book get = listString.get(i);
             System.out.println((i + 1) + ". " + get.getName());
         }
+        System.out.println("-----------------------------------");
+        System.out.println("0. Cancel");
+        System.out.println("-----------------------------------");
+        System.out.println("Vui lòng chọn:");
         Scanner sc = new Scanner(System.in);
         int select = sc.nextInt();
         indexBook = select - 1;
@@ -54,7 +62,8 @@ public class Controller {
         System.out.println("1. Sửa sách");
         System.out.println("2. Xóa sách");
         System.out.println("3. Cancel");
-        Scanner sc = new Scanner(System.in);
+        System.out.println("-----------------------------------");
+        System.out.println("Vui lòng chọn:");
         String select = sc.nextLine();
         return select;
     }
@@ -65,7 +74,8 @@ public class Controller {
         System.out.println("2. Sửa tên tác giả");
         System.out.println("3. Sửa tên nhà xuất bản");
         System.out.println("4. Cancel");
-        Scanner sc = new Scanner(System.in);
+        System.out.println("-----------------------------------");
+        System.out.println("Vui lòng chọn:");
         String select = sc.nextLine();
         return select;
     }
@@ -75,7 +85,8 @@ public class Controller {
         System.out.println("Bạn có chắc chắn muốn xóa sách không?");
         System.out.println("1. Có");
         System.out.println("2. Hủy");
-        Scanner sc = new Scanner(System.in);
+        System.out.println("-----------------------------------");
+        System.out.println("Vui lòng chọn:");
         String select = sc.nextLine();
         return select;
     }
@@ -87,7 +98,8 @@ public class Controller {
         System.out.println("2. Tên tác giả");
         System.out.println("3. Tên nhà xuất bản");
         System.out.println("4. Cancel");
-        Scanner sc = new Scanner(System.in);
+        System.out.println("-----------------------------------");
+        System.out.println("Vui lòng chọn:");
         String select = sc.nextLine();
         return select;
     }
@@ -95,7 +107,6 @@ public class Controller {
     public String findByName() {
         System.out.println("-----------------------------------");
         System.out.println("Nhập tên sách muốn tìm kiếm:");
-        Scanner sc = new Scanner(System.in);
         String select = sc.nextLine();
         int count = 0;
         for (int i = 0; i < listString.size(); i++) {
@@ -113,7 +124,6 @@ public class Controller {
     public String findByAuthor() {
         System.out.println("-----------------------------------");
         System.out.println("Nhập tên tác giả muốn tìm kiếm:");
-        Scanner sc = new Scanner(System.in);
         String select = sc.nextLine();
         int count = 0;
         for (int i = 0; i < listString.size(); i++) {
@@ -131,7 +141,6 @@ public class Controller {
     public String findByNXB() {
         System.out.println("-----------------------------------");
         System.out.println("Nhập tên nhà xuất bản muốn tìm kiếm:");
-        Scanner sc = new Scanner(System.in);
         String select = sc.nextLine();
         int count = 0;
         for (int i = 0; i < listString.size(); i++) {
@@ -148,8 +157,9 @@ public class Controller {
 
     public String editName() {
         System.out.println("-----------------------------------");
-        System.out.println("Nhập tên sách mới:");
-        Scanner sc = new Scanner(System.in);
+        System.out.println("Tên sách cũ: " + listString.get(indexBook).getName());
+        System.out.println("-----------------------------------");
+        System.out.println("Vui lòng nhập tên sách mới:");
         String select = sc.nextLine();
         listString.get(indexBook).setName(select);
         return select;
@@ -157,8 +167,9 @@ public class Controller {
     
     public String editAuthor() {
         System.out.println("-----------------------------------");
-        System.out.println("Nhập tên tác giả mới:");
-        Scanner sc = new Scanner(System.in);
+        System.out.println("Tên tác giả: " + listString.get(indexBook).getAuthor());
+        System.out.println("-----------------------------------");
+        System.out.println("Vui lòng nhập tên tác giả mới:");
         String select = sc.nextLine();
         listString.get(indexBook).setAuthor(select);
         return select;
@@ -166,8 +177,9 @@ public class Controller {
     
     public String editNXB() {
         System.out.println("-----------------------------------");
-        System.out.println("Nhập tên nhà xuất bản mới:");
-        Scanner sc = new Scanner(System.in);
+        System.out.println("Tên nhà xuất bản cũ: " + listString.get(indexBook).getNXB());
+        System.out.println("-----------------------------------");
+        System.out.println("Vui lòng nhập tên nhà xuất bản mới:");
         String select = sc.nextLine();
         listString.get(indexBook).setNXB(select);
         return select;
@@ -175,5 +187,18 @@ public class Controller {
 
     public void removeBook() {
         listString.remove(indexBook);
+    }
+
+    public Book addBook() {
+        int id = new Random().nextInt(99999) + 100000;
+        System.out.println("Nhập tên cuốn sách:");
+        String name = sc.nextLine();
+        System.out.println("Nhập tên tác giả:");
+        String author = sc.nextLine();
+        System.out.println("Nhập tên nhà xuất bản:");
+        String nxb = sc.nextLine();
+        Book book = new Book(id, name, author, nxb);
+        listString.add(book);
+        return book;
     }
 }
